@@ -144,16 +144,14 @@ a {
 
 .wrapper-content{
   display: flex;
-  gap: var(--spacing);
+  gap: var(--spacing-plus);
   width: 100%;
   max-width: 900px;
   flex: 1;
 }
-.wrapper-content ul{
-  
+.megin-efni {
+  gap: var(--spacing-plus);
 }
-
-/* Það sem fylgir er tillaga að uppbyggingu á selectorum fyrir verkefnið */
 
 /** Haus á síðum **/
 
@@ -163,6 +161,7 @@ header {
   text-align: center;
   width: 100%;
 }
+
 .efra-content {
   display: flex;
   flex-direction: row;
@@ -170,8 +169,9 @@ header {
 }
 .efra-content img {
   max-width: 300px;
-  border-radius: 10px;
+  border-radius: var(--border-radius-image);
 }
+
 
 .cards {
   display: flex;
@@ -190,11 +190,14 @@ header {
 }
 .card {
   border: var(--border-regular);
+  border-radius: var(--border-radius-regular);
   width: 50%;
 }
 .card .image img {
   width: 100%;
   height: 300px;
+  border-top-left-radius: var(--border-radius-regular);
+  border-top-right-radius: var(--border-radius-regular);
   object-fit:cover;
 }
 
