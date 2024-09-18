@@ -27,12 +27,50 @@ html {
 }
 
 /* Almennt */
+:root {
+  --font-size-base: 16px;
+  --font-size-headings: 1.5rem;
+
+  /* Grunn bilið okkar er 1rem == 16px */
+  --spacing: 1rem;
+  --spacing-plus: 1.5rem;
+
+  /* Hámarks og lágmarks breidd á efni */
+  --max-width: 1200px;
+  --min-width-image: 200px;
+  --max-width-image: 300px;
+  --max-width-footer-section: 250px;
+
+  /* Border breiddir */
+  --border-width: 1px;
+  --border-radius-regular: 5px;
+  --border-radius-image: 10px;
+  --border-regular: 1px solid #000;
+
+  /* Litir */
+  /** Litir með nafni **/
+  --color-yellow: #f3dd99;
+  --color-white: #ffffff;
+  --color-purple: #eebbdd;
+  --color-purple-dark: #cc99bb;
+
+  /** Litir með notkun **/
+  --color-background-primary: var(--color-yellow);
+  --color-background-secondary: var(--color-purple);
+  --color-background-form: var(--color-white);
+  --color-border-with-background: var(--color-purple-dark);
+
+  /* Letur stillingar */
+  --font-base-size: 1rem;
+  --font-family-base: 'Open Sans', Arial, Helvetica, sans-serif;
+  --font-family-heading: 'Matemasie-Regular', 'Comic Sans MS', cursive;
+}
 
 /** Letur og stærðir **/
 
 /*** Grunnstærð er 16px ***/
 html {
-  font-size: 16px;
+  font-size: var(--font-size-base);
 }
 
 /*** Leturgerðir sem við sækjum úr fonts/ möppu ***/
@@ -61,7 +99,7 @@ html,
 input,
 select,
 button {
-  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  font-family: var(--font-family-base);
 }
 
 /*** Allar fyrirsagnir nota Matemasie regular ***/
@@ -69,7 +107,7 @@ h1,
 h2,
 h3,
 legend {
-  font-family: 'Matemasie-Regular', 'Comic Sans MS', cursive;
+  font-family: var(--font-family-heading);
 }
 
 /** Lætur myndir aldrei taka meira pláss en foreldri skilgreinir **/
@@ -97,14 +135,22 @@ a {
 .wrapper {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 100%;
   min-height: 100vh;
-
+  gap: var(--spacing);
   background-color: #f3dd99;
 }
 
-.wrapper main {
+.wrapper-content{
+  display: flex;
+  gap: var(--spacing);
+  width: 100%;
+  max-width: 900px;
   flex: 1;
+}
+.wrapper-content ul{
+  
 }
 
 /* Það sem fylgir er tillaga að uppbyggingu á selectorum fyrir verkefnið */
@@ -112,46 +158,57 @@ a {
 /** Haus á síðum **/
 
 header {
-  padding: 1em 1.5em;
+  padding: var(--spacing) var(--spacing-plus);
   background-color: #cc99bb;
   text-align: center;
+  width: 100%;
+}
+.efra-content {
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing);
+}
+.efra-content img {
+  max-width: 300px;
+  border-radius: 10px;
 }
 
-/** Valmynd **/
-
-nav {
-  margin-bottom: 1rem;
-  padding: 1rem;
-  border-bottom: 4px solid #cc99bb;
-
-  background-color: #eebbdd;
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing);
 }
 
-nav ul {
-  list-style: none;
+.cards > .title {
+  width: 100%;
   text-align: center;
 }
-
-nav ul li {
-  display: inline-block;
-  margin-right: 1rem;
+.cards > .content{
+  display: flex;
+  width: 100%;
+  gap: var(--spacing);
+}
+.card {
+  border: var(--border-regular);
+  width: 50%;
+}
+.card .image img {
+  width: 100%;
+  height: 300px;
+  object-fit:cover;
 }
 
 /** Meginmál og efni forsíðu **/
 
 main {
-  margin: 0 auto 2em auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  width: 100%;
-  max-width: 900px;
+  
 }
 
 main p,
 main section {
   margin-bottom: 1rem;
 }
-
+/**
 main img {
   float: right;
   margin-left: 1rem;
@@ -159,6 +216,7 @@ main img {
   max-width: 300px;
   border-radius: 10px;
 }
+  **/
 
 /** Fótur **/
 
@@ -167,6 +225,7 @@ footer {
   border-top: 4px solid #cc99bb;
   background-color: #eebbdd;
   text-align: center;
+  width: 100%;
 }
 
 footer > section {
