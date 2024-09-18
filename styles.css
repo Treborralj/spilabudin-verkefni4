@@ -211,15 +211,6 @@ main p,
 main section {
   margin-bottom: 1rem;
 }
-/**
-main img {
-  float: right;
-  margin-left: 1rem;
-  margin-bottom: 1rem;
-  max-width: 300px;
-  border-radius: 10px;
-}
-  **/
 
 /** Fótur **/
 
@@ -360,7 +351,7 @@ fieldset input[type='checkbox'] {
   width: auto;
 }
 
-form button {
+button {
   display: inline-block;
   padding: 0.5rem 1rem;
   border-radius: 5px;
