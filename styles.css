@@ -7,12 +7,14 @@
 /* Reiknum stærð á öllum boxum sem border-box */
 html {
   box-sizing: border-box;
+  
 }
 /* og látum erfast á allt */
 *,
 *:before,
 *:after {
   box-sizing: inherit;
+  
 }
 
 /* hjálpar class sem felur sjónrænt en skjálesarar lesa */
@@ -34,6 +36,8 @@ html {
   /* Grunn bilið okkar er 1rem == 16px */
   --spacing: 1rem;
   --spacing-plus: 1.5rem;
+  --spacing-plus-plus: 2rem;
+  --spacing-litid: 0.5rem;
 
   /* Hámarks og lágmarks breidd á efni */
   --max-width: 1200px;
@@ -53,6 +57,7 @@ html {
   --color-white: #ffffff;
   --color-purple: #eebbdd;
   --color-purple-dark: #cc99bb;
+  --color-black: #000000;
 
   /** Litir með notkun **/
   --color-background-primary: var(--color-yellow);
@@ -67,12 +72,9 @@ html {
 }
 
 /** Letur og stærðir **/
-
-/*** Grunnstærð er 16px ***/
 html {
   font-size: var(--font-size-base);
 }
-
 /*** Leturgerðir sem við sækjum úr fonts/ möppu ***/
 @font-face {
   font-family: 'Matemasie-Regular';
@@ -122,7 +124,7 @@ a {
 
 /** „Til baka á forsíðu“ hlekkur **/
 .back {
-  margin-top: 1em;
+  margin-top: var(--spacing);
 }
 
 /**
@@ -139,17 +141,20 @@ a {
   width: 100%;
   min-height: 100vh;
   gap: var(--spacing);
-  background-color: #f3dd99;
+  background-color: var(--color-background-primary);
 }
 
 .wrapper-content{
   display: flex;
-  gap: var(--spacing-plus);
+  gap: var(--spacing);
   width: 100%;
   max-width: 900px;
   flex: 1;
+  justify-content:center;
 }
 .megin-efni {
+  display: flex;
+  flex-direction: column;
   gap: var(--spacing-plus);
 }
 
@@ -157,9 +162,11 @@ a {
 
 header {
   padding: var(--spacing) var(--spacing-plus);
-  background-color: #cc99bb;
+  background-color: var(--color-purple);
   text-align: center;
   width: 100%;
+  border-bottom: 4px solid var(--color-purple-dark);
+
 }
 
 .efra-content {
@@ -171,7 +178,6 @@ header {
   max-width: 300px;
   border-radius: var(--border-radius-image);
 }
-
 
 .cards {
   display: flex;
@@ -188,11 +194,36 @@ header {
   width: 100%;
   gap: var(--spacing);
 }
-.card {
+.card-efri {
   border: var(--border-regular);
   border-radius: var(--border-radius-regular);
-  width: 50%;
+  width: calc(50% - var(--spacing));
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing);
 }
+.card-efri .content{
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-plus);
+}
+
+.card-efri .title, .content{
+  margin: var(--spacing-litid);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border: var(--border-regular);
+  border-radius: var(--border-radius-regular);
+  width: calc(50% - var(--spacing));
+  
+}
+.card .title, .text, button{
+  margin: var(--spacing-litid);
+}
+
 .card .image img {
   width: 100%;
   height: 300px;
@@ -203,21 +234,17 @@ header {
 
 /** Meginmál og efni forsíðu **/
 
-main {
-  
-}
-
 main p,
 main section {
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing);
 }
 
 /** Fótur **/
 
 footer {
   padding: 1rem;
-  border-top: 4px solid #cc99bb;
-  background-color: #eebbdd;
+  border-top: 4px solid var(--color-purple-dark);
+  background-color: var(--color-background-secondary);
   text-align: center;
   width: 100%;
 }
@@ -226,7 +253,7 @@ footer > section {
   display: inline-block;
   vertical-align: top;
   max-width: 250px;
-  margin-right: 2em;
+  margin-right: var(--spacing-plus-plus);
 }
 
 footer ul {
@@ -234,7 +261,7 @@ footer ul {
 }
 
 footer h2 {
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing);
 }
 
 /*** Opnunartími ***/
@@ -244,19 +271,19 @@ dt {
 }
 
 dd {
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing);
 }
 
 /** Spilasíða, töflustílar **/
 
 table {
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing);
   border-spacing: 0;
 }
 
 table th,
 table td {
-  padding: 0.5rem;
+  padding: var(--spacing-litid);
   text-align: left;
 }
 
@@ -273,7 +300,7 @@ table tr td:last-child {
 }
 
 table tbody tr:nth-child(2n + 1) {
-  background-color: #eebbdd;
+  background-color: var(--color-background-secondary);
 }
 
 table img {
@@ -291,11 +318,11 @@ table td:last-child {
   clear: left;
 
   width: 100%;
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-plus-plus);
 }
 
 .event .title {
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing);
 }
 
 .event .content {
@@ -305,8 +332,8 @@ table td:last-child {
 .event img {
   float: left;
 
-  margin-right: 1rem;
-  margin-bottom: 1rem;
+  margin-right: var(--spacing);
+  margin-bottom: var(--spacing);
 }
 
 .event .register {
@@ -316,19 +343,19 @@ table td:last-child {
 /** Skráningarform **/
 
 fieldset {
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing);
   border: 0;
 }
 
 fieldset legend {
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
+  margin-bottom: var(--spacing);
+  font-size: var(--font-base-size);
 }
 
 fieldset div {
   width: 100%;
   max-width: 400px;
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing);
 }
 
 fieldset div label {
@@ -338,23 +365,28 @@ fieldset div label {
 fieldset input,
 fieldset select,
 fieldset textarea {
-  padding: 0.5rem;
+  padding: var(--spacing-litid);
   width: 100%;
-  border: 1px solid #000000;
+  border: 1px solid  var(--color-black);
 
-  background-color: #ffffff;
+  background-color: var(--color-background-form);
 }
 
 fieldset input[type='checkbox'] {
   display: inline-block;
-  margin-right: 0.5rem;
+  margin-right: var(--spacing-litid);
   width: auto;
 }
 
 button {
   display: inline-block;
-  padding: 0.5rem 1rem;
+  padding: var(--spacing-litid) var(--spacing);
   border-radius: 5px;
   border-width: 1px;
-  background-color: #eebbdd;
+  background-color: var(--color-background-secondary);
+}
+
+.takkar {
+  display: flex;
+  justify-content: space-between;
 }
